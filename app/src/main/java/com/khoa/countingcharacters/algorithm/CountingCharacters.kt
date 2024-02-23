@@ -4,6 +4,13 @@ fun main(args: Array<String>) {
     print("Nhập chuỗi: ")
     val str: String? = readLine()
     println("${countingCharacters(str?:"").size} ${countingCharacters(str?:"")}")
+    /*
+    * input: ddwdddw               -> output: 4 [dd, w, dd, w]
+    * input: hfdawhwhcoomdd        -> output: 4 [aw, w, oo, dd]
+    * input: hfdawhwhcoomddd       -> output: 4 [aw, w, oo, dd]
+    * input: hfdawhwhcoomddw       -> output: 5 [aw, w, oo, dd, w]
+    * input: hfdawhwhcoomddoww     -> output: 6 [aw, w, oo, dd, ow, w]
+    * */
 }
 
 // Độ phức tạp thuật toán là O(n)
@@ -19,7 +26,7 @@ fun countingCharacters(str: String): ArrayList<String>{
 
 
         if (characters.contains("$firstChar$nextChar")) {
-            if(i == temp || "$firstChar$nextChar" == "$firstChar") {
+            if(i == temp && i != 0 || "$firstChar$nextChar" == "$firstChar") {
                 continue
             }
             arrVietNam.add("$firstChar$nextChar")
