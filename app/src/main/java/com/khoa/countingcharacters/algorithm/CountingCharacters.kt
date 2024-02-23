@@ -10,15 +10,20 @@ fun main(args: Array<String>) {
 fun countingCharacters(str: String): ArrayList<String>{
     val characters = arrayOf("aw","aa","dd","ee","ow","w","oo")
     val arrVietNam = arrayListOf<String>()
+    var temp = 0
 
 
-    for (i in 0 until str.length) {
+    for (i in 0 until str.length ) {
         val firstChar = str[i]
-        val nextChar = if ((i+1) < str.length) str[i+1] else ""
+        val nextChar = if ((i+1) < str.length ) str[i+1] else ""
 
 
         if (characters.contains("$firstChar$nextChar")) {
+            if(i == temp || "$firstChar$nextChar" == "$firstChar") {
+                continue
+            }
             arrVietNam.add("$firstChar$nextChar")
+            temp = i+1
             continue
         }
         if (characters.contains("$nextChar")) {
